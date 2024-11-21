@@ -7,9 +7,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Init
+
+```
+cp .env.example .env
+composer install
+php artisan key:generate
+php atisan migrate
+```
+
 ## Filament Shield
+
+#### Se ejecuta cuando se crea por primera vez o se genera algun cambio"
 
 ```
 php artisan shield:seeder --generate --force
+```
+#### Production
+```
+php artisan shield:super-admin
 
+php artisan db:seed --class=ShieldSeeder
 ```
