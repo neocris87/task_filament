@@ -47,7 +47,10 @@ class TaskPolicy
      */
     public function delete(User $user, Task $task): bool
     {
-        return $user->can('delete_task');
+        if($task->user_id == $user->id && $user->can('delete_task')){
+            return true;
+        }
+        return false;
     }
 
     /**

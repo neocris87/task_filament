@@ -16,7 +16,7 @@ class UserPolicy
      * @param  \App\Models\User  $user
      * @return bool
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user ): bool
     {
         return $user->can('view_any_user');
     }

@@ -8,19 +8,25 @@ use Livewire\Component;
 class Index extends Component
 {
 
-    public $tasks ;
+    public $tasks;
 
-    public function mount(){
+    public function mount()
+    {
+        $this->authorize('viewAny', Task::class);
+
         $this->tasks = Task::with('user')->get();
     }
 
     public function render()
     {
-        // dd($this->tasks);
         return view('livewire.task.index');
     }
 
-    public function delete( $id){
+    public function delete($id)
+    {
+
+        $this->authorize('delete', Task::find($id));
+
         Task::destroy($id);
         $this->tasks = Task::with('user')->get();
     }

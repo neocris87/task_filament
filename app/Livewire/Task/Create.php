@@ -19,6 +19,8 @@ class Create extends Component
     // public $completed;
 
     public function mount(){
+        $this->authorize('create' , Task::class );
+
         $this->users = User::all();
     }
 

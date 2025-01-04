@@ -23,9 +23,10 @@
                     <td>{{ $task->completed == true ? "Completada" : "Pendiente" }}</td>
                     <td>
                         {{-- <x-button label="Editar" class="btn-warning" onclick="alert('Editar # ' + {{ $task->id }})" /> --}}
-                        <x-button label="Eliminar" class="btn-error" wire:click="delete({{ $task->id }})" />
+                        @can('delete', $task)
+                            <x-button label="Eliminar" class="btn-error" wire:click="delete({{ $task->id }})" />
+                        @endcan
                     </td>
-
                 </tr>
             @endforeach
           </tbody>
